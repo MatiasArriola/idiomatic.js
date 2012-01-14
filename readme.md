@@ -1,27 +1,20 @@
-# Principles of Writing Consistent, Idiomatic JavaScript
+# Principios para escribir JavaScript consistente e idiomático
 
-## This is a living document and new ideas for improving the code around us are always welcome. Contribute: fork, clone, branch, commit, push, pull request.
+## Este es un documento que va a ir siendo actualizado y nuevas ideas para mejorar el código van a ser bien recibidios. En realidad este es un fork con la versión traducida del repo original https://github.com/rwldrn/idiomatic.js/ (inglés)  
+## Todo el código en cualquier proyecto debería verse como si una sola persona lo hubiera escrito, no importa cuanta gente haya contribuido.
 
-* Rick Waldron [@rwaldron](http://twitter.com/rwaldron), [github](https://github.com/rwldrn)
-* Mathias Bynens [@mathias](http://twitter.com/mathias), [github](https://github.com/mathiasbynens)
-* Schalk Neethling [@ossreleasefeed](http://twitter.com/ossreleasefeed), [github](https://github.com/ossreleasefeed/)
-* Kit Cambridge  [@kitcambridge](http://twitter.com/kitcambridge), [github](https://github.com/kitcambridge)
-* Raynos  [github](https://github.com/Raynos)
+### La lista que se presenta a continuación destaca las prácticas que uso en todo el código del que soy autor, y las contribuciones a todos los proyectos que he creado, deben seguir estas prácticas.
 
-## All code in any code-base should look like a single person typed it, no matter how many people contributed.
-
-### The following list outlines the practices that I use in all code that I am the original author of; contributions to projects that I have created should follow these guidelines.
-
-### I do not intend to impose my style preferences on other people's code; if they have an existing common style - this should be respected.
+### No intento imponer mis preferencias de estilo en el código de otras personas; si tienen un algún estilo común, esto debería ser respetado. 
 
 ## Translations
 
 * [French](https://github.com/jfroffice/idiomatic.js/)
+* [ORIGINAL] [English] (https://github.com/rwldrn/idiomatic.js/)
 
+## Cosas importantes, no-idiomáticas:
 
-## Important, Non-Idiomatic Stuff:
-
-### Code Quality: Awesome Tools, Resources & References
+### Calidad de código: Herramientas, recursos y referencias
 
  * [jsPerf](http://jsperf.com/)
  * [jsFiddle](http://jsfiddle.net/)
@@ -30,32 +23,34 @@
  * [jshint](http://jshint.com/)
  * [jslint](http://jslint.org/)
 
-[Leveraging Code Quality Tools by Anton Kovalyov](http://anton.kovalyov.net/slides/gothamjs/)
+[Usando herramientas de calidad de código - por Anton Kovalyov](http://anton.kovalyov.net/slides/gothamjs/)
 
 
-### Get Smart
+### Volverse pro
 
 [http://es5.github.com/](http://es5.github.com/)
 
-The following should be considered 1) incomplete, and 2) *REQUIRED READING*. I don't always agree with the style written by the authors below, but one thing is certain: They are consistent. Furthermore, these are authorities on the language.
+Lo siguiente debería de ser considerado 1) es una incompleta, y 2) *REQUERIDA* lectura. No siempre estoy de acuerdo con el estilo escrito por los autores que acá abajo presento, pero una cosa es cierta: Son consistentes; y son autoridades en el lenguaje.
 
  * [Eloquent JavaScript](http://eloquentjavascript.net/)
  * [JavaScript, JavaScript](http://javascriptweblog.wordpress.com/)
  * [Rebecca Murphey](http://www.rebeccamurphey.com/) or [Adventures in JavaScript Development](http://rmurphey.com/)
  * [Perfection Kills](http://perfectionkills.com/)
  * [Douglas Crockford's Wrrrld Wide Web](http://www.crockford.com)
+(Todos estos artículos están en inglés)
+
+### Proceso de Build y Deployment
+
+Los proyectos deberían siempre tratar de incluir algún mecanismo para que el código pueda ser comprimido para uso en producción. Algunos ejemplo de herramientas que hacen esto son [Uglify.js](https://github.com/mishoo/UglifyJS) (hecha en JavaScript), [Google Closure Compiler](http://code.google.com/closure/compiler/) (basado en java), y [YUI Compressor](http://developer.yahoo.com/yui/compressor/). Escoge uno y dale soporte.
+
+Se puede entrar un "kit para build" genérico, ya funcional, en el directorio '/kits' de este mismo repositorio. El uso es sencillo: 1) copiar los contenidos de algún kit de la carpeta '/kits' a un nuevo directorio en el que se va a trabajar, 2) guarda el .js de tu proyecto en el directorio '/src' 3) incluir el nombre del proyecto en el archivo 'project.txt', 4) correr el comando 'make' desde la terminal.
 
 
-### Build & Deployment Process
-
-Projects should always attempt to include some generic means by which source can be compressed in preparation for production use. Some popular and proven tools include the JavaScript-based [Uglify.js](https://github.com/mishoo/UglifyJS), as well as the Java-based [Google Closure Compiler](http://code.google.com/closure/compiler/) and [YUI Compressor](http://developer.yahoo.com/yui/compressor/). Choose one and support it.
-
-You can now find a functional, generic "build kit" in the `/kits` directory of this repository. Usage is easy: 1) copy the contents of a kit found in `/kits` to a new working directory, 2) save your project .js file in the `/src` directory, 3) put the name of the project in `project.txt`, 4) run `make` from command line. (Even easier directions: replace occurrences of "foo")
-
-
-### Test Facility
+### Testing
 
 Projects _must_ include some form of unit, reference, implementation or functional testing. Use case demos DO NOT QUALIFY as "tests". The following is a list of test frameworks, none of which are endorsed more then the other.
+
+Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional testing etc. Las demos NO SE CALIFICAN como "tests". A continuación se incluye una lista de frameworks para testing, ninguno de los cuales recomiendo más que otro.
 
  * [QUnit](http://github.com/jquery/qunit)
  * [Jasmine](https://github.com/pivotal/jasmine)
@@ -64,7 +59,7 @@ Projects _must_ include some form of unit, reference, implementation or function
  * [Hiro](http://hirojs.com/)
  * [JsTestDriver](https://code.google.com/p/js-test-driver/)
 
-## Table of Contents
+## Tabla de contenidos
 
  * [Whitespace](#whitespace)
  * [Beautiful Syntax](#spacing)
