@@ -48,8 +48,6 @@ Se puede entrar un "kit para build" genérico, ya funcional, en el directorio '/
 
 ### Testing
 
-Projects _must_ include some form of unit, reference, implementation or functional testing. Use case demos DO NOT QUALIFY as "tests". The following is a list of test frameworks, none of which are endorsed more then the other.
-
 Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional testing etc. Las demos NO SE CALIFICAN como "tests". A continuación se incluye una lista de frameworks para testing, ninguno de los cuales recomiendo más que otro.
 
  * [QUnit](http://github.com/jquery/qunit)
@@ -61,43 +59,43 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 ## Tabla de contenidos
 
- * [Whitespace](#whitespace)
+ * [Espacios en blanco](#whitespace)
  * [Beautiful Syntax](#spacing)
- * [Type Checking (Courtesy jQuery Core Style Guidelines)](#type)
- * [Conditional Evaluation](#cond)
- * [Practical Style](#practical)
+ * [Checkeo de tipos (Cortesía de la guía de estilo de jQuery)](#type)
+ * [Evaluación condicional](#cond)
+ * [Estilo práctico](#practical)
  * [Naming](#naming)
- * [Misc](#misc)
+ * [Varios](#misc)
  * [Native & Host Objects](#native)
- * [Comments](#comments)
+ * [Comentarios](#comments)
 
 
-## Idiomatic Style Manifesto
+## Manifiesto de estilo idiomático
 
 
 1. <a name="whitespace">Whitespace</a>
 
-	* Never mix spaces and tabs.
-	* When beginning a project, before you write any code, choose between soft indents (spaces) or real tabs &mdash; this is law.
-		* For readability, I always recommend setting your editor's indent size to two characters &mdash; this means two spaces or two spaces representing a real tab.
-	* If your editor supports it, always work with the "show invisibles" setting turned on. The benefits of this practice are:
-		* Enforced consistency
-		* Eliminating end of line whitespace
-		* Eliminating blank line whitespace
-		* Commits and diffs that are easier to read
+	* Nunca mezclar espacios y tabulaciones.
+	* Cuando comienzas con un proyecto, antes de escribir código, escoger entre indentación blanda (espacios), o tabulaciones &mdash; Esto es LEY.
+		* Para legibilidad, siempre recomiendo setear las preferencias de tu editor para que el tamaño de la identación sea de dos caracteres &mdash; esto significa, usar dos espacios, o que dos espacios representen una tabulación.
+	* Si tu editor lo soporta, siempre trabajar con la preferencia para que se muestren los caracteres invisibles activada. Los beneficios de esta práctica son:
+		* Refuerza la consistencia
+		* Eliminar el espacio en blanco del fin de línea
+		* Eliminar los espacios en blanco de las líneas vacías
+		* Los commits y los diffs (comparar cambios contra versiones anteriores, etc.) va a ser mucho más fácil
 
 
 2. <a name="spacing">Beautiful Syntax</a>
 
-	A. Parens, Braces, Linebreaks
+	A. Paréntesis, Llaves, Fines de línea
 
 	```javascript
 
-	// if/else/for/while/try always have spaces, braces and span multiple lines
-	// this encourages readability
+	// if/else/for/while/try siempre tienen espacios y se extienden a múltiples líneas
+	// Esto mejora la legibilidad
 
 	// 2.A.1.1
-	// Examples of really cramped syntax
+	// Ejemplos de sintaxis toda comprimida
 
 	if(condition) doSomething();
 
@@ -107,7 +105,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 
 	// 2.A.1.1
-	// Use whitespace to promote readability
+	// Uso de espacios para mejorar la legibilidad
 
 	if ( condition ) {
 		// statements
@@ -121,7 +119,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 		// statements
 	}
 
-	// Even better:
+	// Aún mejor:
 
 	var i,
 		length = 100;
@@ -130,7 +128,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 		// statements
 	}
 
-	// Or...
+	// O...
 
 	var i = 0,
 		length = 100;
@@ -154,7 +152,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 	```
 
 
-	B. Assignments, Declarations, Functions ( Named, Expression, Constructor )
+	B. Asignaciones, Declaraciones, Funciones (Nombradas, Expresiones, Constructores)
 
 	```javascript
 
@@ -170,21 +168,21 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 
 	// 2.B.1.2
-	// Using only one `var` per scope (function) promotes readability
-	// and keeps your declaration list free of clutter (also saves a few keystrokes)
+	// Usando solo una instancia de 'var' por scope (o sea, función), mejora la legibilidad
+	// y mantiene tu lista de declaraciones claras (también ahorra de tipear un poco más)
 
-	// Bad
+	// Mal
 	var foo = "";
 	var bar = "";
 	var qux;
 
-	// Good
+	// Bien
 	var foo = "",
 		bar = "",
 		quux;
 
-	// or..
-	var // Comment on these
+	// o..
+	var // comentar en éstos
 	foo = "",
 	bar = "",
 	quux;
@@ -194,22 +192,22 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 	```javascript
 
 	// 2.B.2.1
-	// Named Function Declaration
+	// Declaración De Función Nombrada
 	function foo( arg1, argN ) {
 
 	}
 
-	// Usage
+	// Uso
 	foo( arg1, argN );
 
 
 	// 2.B.2.2
-	// Named Function Declaration
+	// Declaración De Función Nombrada
 	function square( number ) {
 		return number * number;
 	}
 
-	// Usage
+	// Uso
 	square( 10 );
 
 	// Really contrived continuation passing style
@@ -223,15 +221,15 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 
 	// 2.B.2.3
-	// Function Expression
+	// Expresión de función
 	var square = function( number ) {
-		// Return something valuable and relevant
+		// Retornar algo relevante y con valor agregado 
 		return number * number;
 	};
 
-	// Function Expression with Identifier
-	// This preferred form has the added value of being
-	// able to call itself and have an identity in stack traces:
+	// Expresión de función con identificador
+	// Esta forma es preferida porque tiene el valor agregado de 
+	// poder ser llamada a sí misma y ser identificable en el stacktrace (MUY útil para debugging) :
 	var factorial = function factorial( number ) {
 		if ( number < 2 ) {
 			return 1;
@@ -242,13 +240,13 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 
 	// 2.B.2.4
-	// Constructor Declaration
+	// Declaración de Constructor
 	function FooBar( options ) {
 
 		this.options = options;
 	}
 
-	// Usage
+	// Uso
 	var fooBar = new FooBar({ a: "alpha" });
 
 	fooBar.options;
@@ -257,38 +255,38 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 	```
 
 
-	C. Exceptions, Slight Deviations
+	C. Algunas excepciones
 
 	```javascript
 
 	// 2.C.1.1
-	// Functions with callbacks
+	// Funciones con callbacls
 	foo(function() {
-		// Note there is no extra space between the first paren
-		// of the executing function call and the word "function"
+		// Como se ve no hay espacio entre el primer paréntesis 
+		// y la palabra "function"
 	});
 
-	// Function accepting an array, no space
+	// Función que acepta un Array como parámetro, sin espacio entre ([ 
 	foo([ "alpha", "beta" ]);
 
 	// 2.C.1.2
-	// Function accepting an object, no space
+	// Función que acepta un objeto, sin espacio
 	foo({
 		a: "alpha",
 		b: "beta"
 	});
 
-	// Inner grouping parens, no space
+	// Grupo de paréntesis dentro de paréntesis, sin espacio
 	if ( !("foo" in obj) ) {
 
 	}
 
 	```
 
-	D. Consistency Always Wins
+	D. La consistencia siempre gana
 
-	In sections 2.A-2.C, the whitespace rules are set forth as a recommendation with a simpler, higher purpose: consistency.
-	It's important to note that formatting preferences, such as "inner whitespace" should be considered optional, but only one style should exist across the entire source of your project.
+	En las secciones 2.A-2.C, las reglas para los espacios son puestas con un objetivo mas simple y con un propósito más general: consistencia.
+	Es importante destacar que algunas preferencias de formato, deberían ser consideradas opcionales, pero solo un estilo debería existir a través de todo el código de fuente de tu proyecto.
 
 	```javascript
 
@@ -314,13 +312,13 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 	```
 
-	E. End of Lines and Empty Lines
+	E. Fin de línea y líneas vacías
 
-	Whitespace can ruin diffs and make changesets impossible to read. Consider incorporating a pre-commit hook that removes end-of-line whitespace and blanks spaces on empty lines automatically.
+	Espacios en blanco pueden arruinar diffs y hacer los cambios imposibles leer. Considera agregar algún mecanismo para remover automáticamente los espacios que se encuentran al final de la línea o en líneas vacías.
 
-3. <a name="type">Type Checking (Courtesy jQuery Core Style Guidelines)</a>
+3. <a name="type">Checkeo de tipos (Cortesía de la guía de estilo de jQuery)</a>
 
-	3.A Actual Types
+	3.A Tipos
 
 	* String:
 
@@ -341,7 +339,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 	* Array:
 
 		`Array.isArray(arrayObject)`
-		(wherever possible)
+		(cuando sea posible / hay implementaciónes que no tienen esta función)
 
 	* null:
 
@@ -353,28 +351,27 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 	* undefined:
 
-		* Global Variables:
+		* Variables globales:
 
 			* `typeof variable === "undefined"`
 
-		* Local Variables:
+		* Variables locales:
 
 			* `variable === undefined`
 
-		* Properties:
+		* Propiedades:
 			* `object.prop === undefined`
 			* `object.hasOwnProperty( prop )`
 			* `"prop" in object`
 
 
-	JavaScript is a dynamically typed language - which can be your best friend or worst enemy, so: Always respect `type`, as recommended.
+	JavaScript es un lenguaje dinámicamente tipado - lo que puede ser tu mejor amigo o tu peor enemigo, entonces: Siempre respeta al 'type' como se recomienda.
 
+	3.B Coerción de tipos
 
-	3.B Coerced Types
+	Considera lo que causaría lo siguiente...
 
-	Consider the implications of the following...
-
-	Given this HTML:
+	Dado este HTML:
 
 	```html
 
@@ -387,20 +384,20 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 	// 3.B.1.1
 
-	// `foo` has been declared with the value `0` and its type is `number`
+	// 'foo' ha sido declarado con el valor '0' y su tipo es 'number'
 	var foo = 0;
 
 	// typeof foo;
 	// "number"
 	...
 
-	// Somewhere later in your code, you need to update `foo`
-	// with a new value derived from an input element
+	// En algún lugar, más tarde en tu código, necesitas modificar 'foo'
+	// con un nuevo valor derivado de el elemento input del HTML
 
 	foo = document.getElementById("foo-input").value;
 
-	// If you were to test `typeof foo` now, the result would be `string`
-	// This means that if you had logic that tested `foo` like:
+	// Si vas a testear 'typeof foo' ahora, el resultado sería 'string'
+	// Esto significa que si hubieras tenido lógica que comparara 'foo' así:
 
 	if ( foo === 1 ) {
 
@@ -408,15 +405,14 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 	}
 
-	// `importantTask()` would never be evaluated, even though `foo` has a value of "1"
-
+	// `importantTask()` nunca habría sido evaluada, incluso con 'foo' teniendo un valor de "1" 
 
 	// 3.B.1.2
 
-	// You can preempt issues by using smart coercion with unary + or - operators:
+	// Te le podés adelantar a los problemas, usando coerción de tipos con los operadores unarios + o - :
 
 	foo = +document.getElementById("foo-input").value;
-	      ^ unary + operator will convert its right side operand to a number
+	      ^ el operador unario + va a convertir su operando derecho a number
 
 	// typeof foo;
 	// "number"
@@ -427,10 +423,10 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 	}
 
-	// `importantTask()` will be called
+	// `importantTask()` va a ser llamada
 	```
 
-	Here are some common cases along with coercions:
+	Aquí hay algunos casos comunes con coerciones:
 
 
 	```javascript
