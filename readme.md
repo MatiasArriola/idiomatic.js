@@ -517,125 +517,125 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 	parseInt( num, 10 );
 
-	// is the same as...
+	// es lo mismo que...
 
 	~~num;
 
 	```
 
-4. <a name="cond">Conditional Evaluation</a>
+4. <a name="cond">Evaluación condicional</a>
 
 	```javascript
 
 	// 4.1.1
-	// When only evaluating that an array has length,
-	// instead of this:
+	// Cuando evaluamos para saber si un array tiene algún elemento,
+	// en lugar de hacer esto:
 	if ( array.length > 0 ) ...
 
-	// ...evaluate truthiness, like this:
+	// ...evaluar por el valor de verdad de la expresión, como en este caso:
 	if ( array.length ) ...
 
 
 	// 4.1.2
-	// When only evaluating that an array is empty,
-	// instead of this:
+	// Cuando solo evaluamos que un array está vacío,
+	// en lugar de esto:
 	if ( array.length === 0 ) ...
 
-	// ...evaluate truthiness, like this:
+	// ...evaluar el valor de verdad de la expresión:
 	if ( !array.length ) ...
 
 
 	// 4.1.3
-	// When only evaluating that a string is not empty,
-	// instead of this:
+	// Cuando evaluamos que un string no es vacío,
+	// en vez de hacer esto:
 	if ( string !== "" ) ...
 
-	// ...evaluate truthiness, like this:
+	// ...evaluar el valor de verdad de la expresión:
 	if ( string ) ...
 
 
 	// 4.1.4
-	// When only evaluating that a string _is_ empty,
-	// instead of this:
+	// Cuando evaluamos si un string es vacío,
+	// ev lugar de:
 	if ( string === "" ) ...
 
-	// ...evaluate falsy-ness, like this:
+	// ...evaluar la expresión por falso, como aquí:
 	if ( !string ) ...
 
 
 	// 4.1.5
-	// When only evaluating that a reference is true,
-	// instead of this:
+	// Cuando evaluamos si una variable es true,
+	// en lugar de esto:
 	if ( foo === true ) ...
 
-	// ...evaluate like you mean it, take advantage of it's primitive capabilities:
+	// ...expresar directamente de la siguiente manera:
 	if ( foo ) ...
 
 
 	// 4.1.6
-	// When evaluating that a reference is false,
-	// instead of this:
+	// Cuando evaluamos si una variable es false,
+	// en vez de:
 	if ( foo === false ) ...
 
-	// ...use negation to coerce a true evaluation
+	// ...usar negación y expresar de esta manera
 	if ( !foo ) ...
 
-	// ...Be careful, this will also match: 0, "", null, undefined, NaN
-	// If you _MUST_ test for a boolean false, then use
+	// ...Tener cuidado, porque esto va a ser true también para: 0, "", null, undefined, NaN
+	// si se _DEBE_ testear por el valor false solamente, utilizar el ===
 	if ( foo === false ) ...
 
 
 	// 4.1.7
-	// When only evaluating a ref that might be null or undefined, but NOT false, "" or 0,
-	// instead of this:
+	// Cuando solamente se esta evaluando una referencia que puede ser null o undefined, pero NO false, "" or 0,
+	// en lugar de:
 	if ( foo === null || foo === undefined ) ...
 
-	// ...take advantage of == type coercion, like this:
+	// ...tomar ventaja del uso del operador ==:
 	if ( foo == null ) ...
 
-	// Remember, using == will match a `null` to BOTH `null` and `undefined`
-	// but not `false`, "" or 0
+	// Recuerda, usar == va a matchear 'null' con AMBOS 'null' y 'undefined'
+	// pero no 'false', "" o 0
 	null == undefined
 
 	```
-	ALWAYS evaluate for the best, most accurate result - the above is a guideline, not a dogma.
+	SIEMPRE evaluar por el mejor, más preciso resultado - lo de arriba es sólo una guía, no un dogma.
 
 	```javascript
 
 	// 4.2.1
-	// Type coercion and evaluation notes
+	// Coerción de tipo y notas de evaluación
 
-	Prefer `===` over `==` (unless the case requires loose type evaluation)
+	Preferir '===' por sobre '==' (a menos que el caso particular requiera una evaluación no fuertemente tipada)
 
-	=== does not coerce type, which means that:
+	=== no hace coerción de tipos, lo que significa que:
 
 	"1" === 1;
 	// false
 
-	== does coerce type, which means that:
+	== hace coerción de tipos, lo que significa que:
 
 	"1" == 1;
 	// true
 
 
 	// 4.2.2
-	// Booleans, Truthies & Falsies
+	// Booleanos, Verdaderos y Falsos
 
-	Booleans: true, false
+	Booleanos: true, false
 
-	Truthy are: "foo", 1
+	Verdaderos: "foo", 1
 
-	Falsy are: "", 0, null, undefined, NaN, void 0
+	Falsos: "", 0, null, undefined, NaN, void 0
 
 	```
 
 
-5. <a name="practical">Practical Style</a>
+5. <a name="practical">Estilo práctico</a>
 
 	```javascript
 
 	// 5.1.1
-	// A Practical Module
+	// Un módulo práctico
 
 	(function( global ) {
 		var Module = (function() {
@@ -643,30 +643,30 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 			var data = "secret";
 
 			return {
-				// This is some boolean property
+				// Esta es una propiedad booleana
 				bool: true,
-				// Some string value
+				// Algun valor string
 				string: "a string",
-				// An array property
+				// Una propiedad Array
 				array: [ 1, 2, 3, 4 ],
-				// An object property
+				// Una propiedad objeto
 				object: {
-					lang: "en-Us"
+					lang: "es-AR"
 				},
 				getData: function() {
-					// get the current value of `data`
+					// Obtener el valor de 'data'
 					return data;
 				},
 				setData: function( value ) {
-					// set the value of `data` and return it
+					// setea el valor de 'data' y lo retorna
 					return ( data = value );
 				}
 			};
 		})();
 
-		// Other things might happen here
+		// Otras cosas podrían pasar aquí
 
-		// expose our module to the global object
+		// Exponer nuestro módulo al módulo global
 		global.Module = Module;
 
 	})( this );
@@ -676,7 +676,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 	```javascript
 
 	// 5.2.1
-	// A Practical Constructor
+	// Un constructor práctico
 
 	(function( global ) {
 
@@ -696,13 +696,13 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 		};
 
 
-		// To call constructor's without `new`, you might do this:
+		// para llamar al constructor sin usar 'new', se podría hacer de la siguiente manera:
 		var ctor = function( foo ) {
 			return new Ctor( foo );
 		};
 
 
-		// expose our constructor to the global object
+		// Exponer nuestro constructor al objeto global
 		global.ctor = ctor;
 
 	})( this );
@@ -714,14 +714,14 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 6. <a name="naming">Naming</a>
 
 
-	You are not a human code compiler/compressor, so don't try to be one.
+	No sos un compilador/compresor humano de código, entonces no trates de serlo.
 
-	The following code is an example of egregious naming:
+	A continuación ejemplos no-buenos de nombramiento de variables
 
 	```javascript
 
 	// 6.1.1
-	// Example of code with poor names
+	// Ejemplo de código con nombres de variables Pobres
 
 	function q(s) {
 		return document.querySelectorAll(s);
@@ -730,14 +730,14 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 	for(i=0;i<els.length;i++){a.push(els[i]);}
 	```
 
-	Without a doubt, you've written code like this - hopefully that ends today.
+	Sin alguna duda, alguna vez has escrito código como este - con un poco de suerte, eso termina hoy.
 
-	Here's the same piece of logic, but with kinder, more thoughtful naming (and a readable structure):
+	Aquí está la misma pieza de lógica, pero con un nombramiento de variables más inteligente (y una estructura más legible):
 
 	```javascript
 
 	// 6.2.1
-	// Example of code with improved names
+	// Ejemplo de código con nombres mejorados
 
 	function query( selector ) {
 		return document.querySelectorAll( selector );
@@ -754,42 +754,42 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 	```
 
-	A few additional naming pointers:
+	Algunos tips más para nombramiento de variables:
 
 	```javascript
 
 	// 6.3.1
-	// Naming strings
+	// Nombrando strings
 
-	`dog` is a string
+	'dog' es un string
 
 
 	// 6.3.2
-	// Naming arrays
+	// Nombrando arrays
 
-	`dogs` is an array of `dog` strings
+	'dogs' es un array de 'dog' strings
 
 
 	// 6.3.3
-	// Naming functions, objects, instances, etc
+	// Nombrando funciones, objetos, instancias, etc.
 
-	camelCase; function and var declarations
+	camelCase; función y declaración de variable
 
 
 	// 6.3.4
-	// Naming constructors, prototypes, etc.
+	// Nombrando constructores, prototypes, clases, etc.
 
-	PascalCase; constructor function
+	PascalCase; función constructora
 
 
 	// 6.3.5
-	// Naming regular expressions
+	// Nombrando expresiones regulares
 
 	rDesc = //;
 
 
 	// 6.3.6
-	// From the Google Closure Library Style Guide
+	// Extraído de la guía de estilo de la Google Closure Library
 
 	functionNamesLikeThis;
 	variableNamesLikeThis;
@@ -802,22 +802,22 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 	```
 
-7. <a name="misc">Misc</a>
+7. <a name="misc">Varios</a>
 
-	This section will serve to illustrate ideas and concepts that should not be considered dogma, but instead exists to encourage questioning practices in an attempt to find better ways to do common JavaScript programming tasks.
+	Esta sección va a servir para describir ideas y conceptos que no deberían se considerados dogmas, pero existen para alentar a cuestionar prácticas, en un intento para encontrar mejores manera de llevar a cabo tareas comunes de programación en JavaScript. 
 
-	A. Using `switch` should be avoided, modern method tracing will blacklist functions with switch statements
+	A. Usando 'switch' debería ser evitado, traceo moderno de métodos van a poner en una lista negra a las funciones con sentencias switch.
 
-	There seems to be drastic improvements to the execution of `switch` statements in latest releases of Firefox and Chrome.
+	Parecen haber mejoras drásticas a la ejecución de sentencias 'switch' en las últimas versiones de Firefox y Chrome.
 	http://jsperf.com/switch-vs-object-literal-vs-module
 
-	Notable improvements can be witnesses here as well:
+	Mejoras destacables pueden ser vistas aquí también: 
 	https://github.com/rwldrn/idiomatic.js/issues/13
 
 	```javascript
 
 	// 7.A.1.1
-	// An example switch statement
+	// Un ejemplo de una sentencia switch
 
 	switch( foo ) {
 		case "alpha":
@@ -827,12 +827,12 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 			beta();
 			break;
 		default:
-			// something to default to
+			// hacer algo por defecto
 			break;
 	}
 
 	// 7.A.1.2
-	// A better approach would be to use an object literal or even a module:
+	// Una mejor manera de hacer esto sería usar un objeto literal o incluso un módulo:
 
 	var switchObj = {
 		alpha: function() {
@@ -868,30 +868,30 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 
 	// 7.A.1.3
-	// If `foo` is a property of `switchObj` or `switchModule`, execute as a method...
+	// Si 'foo' es una propiedad de 'switchObj' o 'switchModule', ejecutar como un método...
 
 	( switchObj.hasOwnProperty( foo ) && switchObj[ foo ] || switchObj._default )( args );
 
 	( switchModule.hasOwnProperty( foo ) && switchModule[ foo ] || switchModule._default )( args );
 
-	// If you know and trust the value of `foo`, you could even omit the OR check
-	// leaving only the execution:
+	// Si ya se sabe que existe 'foo' y podemos confiar en eso, se puede omitir el uso del OR
+	// dejando sólo la ejecución:
 
 	switchObj[ foo ]( args );
 
 	switchModule[ foo ]( args );
 
 
-	// This pattern also promotes code reusability.
+	// Este patrón también facilita la reutilización de código.
 
 	```
 
-	B. Early returns promote code readability with negligible performance difference
+	B. Hacer un return temprano promociana la legibilidad del código con un ínfimo impacto en la performance 
 
 	```javascript
 
 	// 7.B.1.1
-	// Bad:
+	// Mal:
 	function returnLate( foo ) {
 		var ret;
 
@@ -903,7 +903,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 		return ret;
 	}
 
-	// Good:
+	// Bien:
 
 	function returnEarly( foo ) {
 
@@ -918,11 +918,11 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 8. <a name="native">Native & Host Objects</a>
 
-	The basic principal here is:
+	El principio fundamental aquí es:
 
-	### Don't do stupid shit and everything will be ok.
+	### No hagas mierda estúpida y todo va a estar bien.
 
-	To reinforce this concept, please watch the following presentation:
+	Para reforzar este concepto, mirar esta presentación:
 
 	#### “Everything is Permitted: Extending Built-ins” by Andrew Dupont (JSConf2011, Portland, Oregon)
 
@@ -931,20 +931,20 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 	http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542
 
 
-9. <a name="comments">Comments</a>
+9. <a name="comments">Comentarios</a>
 
-	* JSDoc style is good (Closure Compiler type hints++)
-	* Single line above the code that is subject
-	* Multiline is good
-	* End of line comments are prohibited!
+	* El estilo de JSDoc es bueno (Closure Compiler type hints++)
+	* Una línea por encima del código del que se está hablando
+	* Comentarios en múltiples líneas son buenos
+	* Comentarios en el fin de línea están prohibidos!!
 
 
 
-## Appendix
+## Apéndice
 
-### Comma First.
+### Coma Primero.
 
-Any project that cites this document as its base style guide will not accept comma first code formatting unless explicitly specified otherwise.
+Cualquier proyecto que cite este documento como una guía para estilo no va a aceptar formateo de código con "coma primero", a menos que sea explícitamente específicado.
 
-See: https://mail.mozilla.org/pipermail/es-discuss/2011-September/016805.html
+Ver: https://mail.mozilla.org/pipermail/es-discuss/2011-September/016805.html
 Notable: "That is horrible, and a reason to reject comma first.", "comma-first still is to be avoided"
