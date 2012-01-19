@@ -1,18 +1,20 @@
 # Principios para escribir JavaScript consistente e idiomático
 
-## Este es un documento que va a ir siendo actualizado y nuevas ideas para mejorar el código van a ser bien recibidios. En realidad este es un fork con la versión traducida del repo original https://github.com/rwldrn/idiomatic.js/ (inglés)  
+## Esta traducción es un fork de https://github.com/rwldrn/idiomatic.js/ (inglés), con mínimas modificaciones.
+Ante cualquier duda, sugerencia, etc. cualquier levantar un issue, una pull request, contactarme en [fernetjs](http://fernetjs.com) o vía [@matiasarriola](https://twitter.com/matiasarriola). Tratemos de tener este documento actualizado, e ir incluyendo cosas que estén faltando!
+
 ## Todo el código en cualquier proyecto debería verse como si una sola persona lo hubiera escrito, no importa cuanta gente haya contribuido.
 
 ### La lista que se presenta a continuación destaca las prácticas que uso en todo el código del que soy autor, y las contribuciones a todos los proyectos que he creado, deben seguir estas prácticas.
 
-### No intento imponer mis preferencias de estilo en el código de otras personas; si tienen un algún estilo común, esto debería ser respetado. 
+### No intento imponer mis preferencias de estilo en el código de otras personas; si tienen un algún estilo común, homogéneo, esto debería ser respetado. 
 
-## Translations
+## Traducciones
 
 * [French](https://github.com/jfroffice/idiomatic.js/)
 * [ORIGINAL] [English] (https://github.com/rwldrn/idiomatic.js/)
 
-## Cosas importantes, no-idiomáticas:
+## Cosas importantes, no directamente relacionadas al js idiomático:
 
 ### Calidad de código: Herramientas, recursos y referencias
 
@@ -23,14 +25,14 @@
  * [jshint](http://jshint.com/)
  * [jslint](http://jslint.org/)
 
-[Usando herramientas de calidad de código - por Anton Kovalyov](http://anton.kovalyov.net/slides/gothamjs/)
+[Usando herramientas de calidad de código - por Anton Kovalyov](http://anton.kovalyov.net/slides/gothamjs/) (inglés)
 
 
-### Volverse pro
+### Conociendo mejor el lenguaje
 
 [http://es5.github.com/](http://es5.github.com/)
 
-Lo siguiente debería de ser considerado 1) es una incompleta, y 2) *REQUERIDA* lectura. No siempre estoy de acuerdo con el estilo escrito por los autores que acá abajo presento, pero una cosa es cierta: Son consistentes; y son autoridades en el lenguaje.
+Lo siguiente debería de ser considerado 1) éstas son incompletas, y 2) *REQUERIDAS* lecturas. No siempre estoy de acuerdo con el estilo escrito por los autores que acá abajo presento, pero una cosa es cierta: Son consistentes; y son autoridades en el lenguaje.
 
  * [Eloquent JavaScript](http://eloquentjavascript.net/)
  * [JavaScript, JavaScript](http://javascriptweblog.wordpress.com/)
@@ -41,14 +43,14 @@ Lo siguiente debería de ser considerado 1) es una incompleta, y 2) *REQUERIDA* 
 
 ### Proceso de Build y Deployment
 
-Los proyectos deberían siempre tratar de incluir algún mecanismo para que el código pueda ser comprimido para uso en producción. Algunos ejemplo de herramientas que hacen esto son [Uglify.js](https://github.com/mishoo/UglifyJS) (hecha en JavaScript), [Google Closure Compiler](http://code.google.com/closure/compiler/) (basado en java), y [YUI Compressor](http://developer.yahoo.com/yui/compressor/). Escoge uno y dale soporte.
+Los proyectos deberían siempre tratar de incluir algún mecanismo para que el código pueda ser comprimido y optimizado para uso en producción. Algunos ejemplos de herramientas que hacen esto son [Uglify.js](https://github.com/mishoo/UglifyJS) (hecha en JavaScript), [Google Closure Compiler](http://code.google.com/closure/compiler/) (basada en java), y [YUI Compressor](http://developer.yahoo.com/yui/compressor/). Escoge una y dale soporte.
 
-Se puede entrar un "kit para build" genérico, ya funcional, en el directorio '/kits' de este mismo repositorio. El uso es sencillo: 1) copiar los contenidos de algún kit de la carpeta '/kits' a un nuevo directorio en el que se va a trabajar, 2) guarda el .js de tu proyecto en el directorio '/src' 3) incluir el nombre del proyecto en el archivo 'project.txt', 4) correr el comando 'make' desde la terminal.
+Se puede encontrar un "kit para build" genérico, ya funcional, en el directorio '/kits' de este mismo repositorio. El uso es sencillo: 1) copiar los contenidos de algún kit de la carpeta '/kits' a un nuevo directorio en el que se va a trabajar, 2) guarda el .js de tu proyecto en el directorio '/src' 3) incluir el nombre del proyecto en el archivo 'project.txt', 4) correr el comando 'make' desde la terminal.
 
 
 ### Testing
 
-Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional testing etc. Las demos NO SE CALIFICAN como "tests". A continuación se incluye una lista de frameworks para testing, ninguno de los cuales recomiendo más que otro.
+Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional testing etc. Las demos NO CUENTAN como "tests". A continuación, una lista de frameworks para testing, ninguno de los cuales recomiendo más que otro.
 
  * [QUnit](http://github.com/jquery/qunit)
  * [Jasmine](https://github.com/pivotal/jasmine)
@@ -73,7 +75,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 ## Manifiesto de estilo idiomático
 
 
-1. <a name="whitespace">Whitespace</a>
+1. <a name="whitespace">Espacios en blanco</a>
 
 	* Nunca mezclar espacios y tabulaciones.
 	* Cuando comienzas con un proyecto, antes de escribir código, escoger entre indentación blanda (espacios), o tabulaciones &mdash; Esto es LEY.
@@ -162,13 +164,13 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 		num = 1,
 		undef;
 
-	// Literal notations:
+	// Notaciones literales:
 	var array = [],
 		object = {};
 
 
 	// 2.B.1.2
-	// Usando solo una instancia de 'var' por scope (o sea, función), mejora la legibilidad
+	// Usando solo una instancia de 'var' por scope (o sea, dentro de la función), mejora la legibilidad
 	// y mantiene tu lista de declaraciones claras (también ahorra de tipear un poco más)
 
 	// Mal
@@ -365,9 +367,9 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 			* `"prop" in object`
 
 
-	JavaScript es un lenguaje dinámicamente tipado - lo que puede ser tu mejor amigo o tu peor enemigo, entonces: Siempre respeta al 'type' como se recomienda.
+	JavaScript es un lenguaje dinámicamente tipado - por lo que puede ser tu mejor amigo o tu peor enemigo, entonces: Siempre respeta al 'type' como se recomienda.
 
-	3.B Coerción de tipos
+	3.B Conversiones implícitas de tipos
 
 	Considera lo que causaría lo siguiente...
 
@@ -409,7 +411,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 	// 3.B.1.2
 
-	// Te le podés adelantar a los problemas, usando coerción de tipos con los operadores unarios + o - :
+	// Te le podés adelantar a los problemas, usando conversión de tipos con los operadores unarios + o - :
 
 	foo = +document.getElementById("foo-input").value;
 	      ^ el operador unario + va a convertir su operando derecho a number
@@ -426,7 +428,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 	// `importantTask()` va a ser llamada
 	```
 
-	Aquí hay algunos casos comunes con coerciones:
+	Aquí hay algunos casos comunes de conversiones implícitas:
 
 
 	```javascript
@@ -556,7 +558,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 	// 4.1.4
 	// Cuando evaluamos si un string es vacío,
-	// ev lugar de:
+	// en lugar de:
 	if ( string === "" ) ...
 
 	// ...evaluar la expresión por falso, como aquí:
@@ -580,8 +582,8 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 	// ...usar negación y expresar de esta manera
 	if ( !foo ) ...
 
-	// ...Tener cuidado, porque esto va a ser true también para: 0, "", null, undefined, NaN
-	// si se _DEBE_ testear por el valor false solamente, utilizar el ===
+	// ...Tener cuidado, porque la anterior expresión va a ser true también para: 0, "", null, undefined, NaN
+	// si se _DEBE_ testear por el valor false únicamente, utilizar el ===
 	if ( foo === false ) ...
 
 
@@ -598,21 +600,21 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 	null == undefined
 
 	```
-	SIEMPRE evaluar por el mejor, más preciso resultado - lo de arriba es sólo una guía, no un dogma.
+	SIEMPRE evaluar por el mejor, más preciso resultado - lo de arriba es sólo una guía o un dogma y depende mucho de cada situación.
 
 	```javascript
 
 	// 4.2.1
-	// Coerción de tipo y notas de evaluación
+	// Sobre los tipos y evaluación de expresiones
 
 	Preferir '===' por sobre '==' (a menos que el caso particular requiera una evaluación no fuertemente tipada)
 
-	=== no hace coerción de tipos, lo que significa que:
+	=== no genera coerción de tipos, lo que significa que:
 
 	"1" === 1;
 	// false
 
-	== hace coerción de tipos, lo que significa que:
+	== genera coerción de tipos, lo que significa que:
 
 	"1" == 1;
 	// true
@@ -714,14 +716,14 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 6. <a name="naming">Naming</a>
 
 
-	No sos un compilador/compresor humano de código, entonces no trates de serlo.
+	Si no sos un compilador/compresor humano de código, entonces no trates de serlo.
 
-	A continuación ejemplos no-buenos de nombramiento de variables
+	A continuación ejemplos "tristes" de nombramiento de variables
 
 	```javascript
 
 	// 6.1.1
-	// Ejemplo de código con nombres de variables Pobres
+	// Ejemplo de código con nombres de variables pobres / poco descriptivos
 
 	function q(s) {
 		return document.querySelectorAll(s);
@@ -804,9 +806,9 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 7. <a name="misc">Varios</a>
 
-	Esta sección va a servir para describir ideas y conceptos que no deberían se considerados dogmas, pero existen para alentar a cuestionar prácticas, en un intento para encontrar mejores manera de llevar a cabo tareas comunes de programación en JavaScript. 
+	Esta sección va a servir para describir ideas y conceptos que no deberían se considerados dogmas, pero existen para alentar a cuestionarse prácticas, en un intento para encontrar mejores maneras de llevar a cabo tareas comunes de programación en JavaScript. 
 
-	A. Usando 'switch' debería ser evitado, traceo moderno de métodos van a poner en una lista negra a las funciones con sentencias switch.
+	A. Usar 'switch' debería ser evitado, traceo moderno de métodos van a poner en una lista negra a las funciones con sentencias switch.
 
 	Parecen haber mejoras drásticas a la ejecución de sentencias 'switch' en las últimas versiones de Firefox y Chrome.
 	http://jsperf.com/switch-vs-object-literal-vs-module
@@ -817,7 +819,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 	```javascript
 
 	// 7.A.1.1
-	// Un ejemplo de una sentencia switch
+	// Ejemplo de una sentencia switch
 
 	switch( foo ) {
 		case "alpha":
@@ -920,11 +922,11 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 	El principio fundamental aquí es:
 
-	### No hagas mierda estúpida y todo va a estar bien.
+	### No hagas mierda estúpida y todo va a estar bien. 
 
 	Para reforzar este concepto, mirar esta presentación:
 
-	#### “Everything is Permitted: Extending Built-ins” by Andrew Dupont (JSConf2011, Portland, Oregon)
+	#### “Everything is Permitted: Extending Built-ins” by Andrew Dupont (JSConf2011, Portland, Oregon) - recomendada!
 
 	<iframe src="http://blip.tv/play/g_Mngr6LegI.html" width="480" height="346" frameborder="0" allowfullscreen></iframe><embed type="application/x-shockwave-flash" src="http://a.blip.tv/api.swf#g_Mngr6LegI" style="display:none"></embed>
 
@@ -933,8 +935,8 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 9. <a name="comments">Comentarios</a>
 
-	* El estilo de JSDoc es bueno (Closure Compiler type hints++)
-	* Una línea por encima del código del que se está hablando
+	* El estilo de JSDoc es bueno y aceptable (Closure Compiler type hints++)
+	* Comentar en la línea que está encima del código del que se está hablando
 	* Comentarios en múltiples líneas son buenos
 	* Comentarios en el fin de línea están prohibidos!!
 
@@ -948,3 +950,5 @@ Cualquier proyecto que cite este documento como una guía para estilo no va a ac
 
 Ver: https://mail.mozilla.org/pipermail/es-discuss/2011-September/016805.html
 Notable: "That is horrible, and a reason to reject comma first.", "comma-first still is to be avoided"
+
+Salud.
