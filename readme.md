@@ -45,7 +45,7 @@ Lo siguiente debería de ser considerado 1) éstas son incompletas, y 2) *REQUER
 
 Los proyectos deberían siempre tratar de incluir algún mecanismo para que el código pueda ser comprimido y optimizado para uso en producción. Algunos ejemplos de herramientas que hacen esto son [Uglify.js](https://github.com/mishoo/UglifyJS) (hecha en JavaScript), [Google Closure Compiler](http://code.google.com/closure/compiler/) (basada en java), y [YUI Compressor](http://developer.yahoo.com/yui/compressor/). Escoge una y dale soporte.
 
-Se puede encontrar un "kit para build" genérico, ya funcional, en el directorio '/kits' de este mismo repositorio. El uso es sencillo: 1) copiar los contenidos de algún kit de la carpeta '/kits' a un nuevo directorio en el que se va a trabajar, 2) guarda el .js de tu proyecto en el directorio '/src' 3) incluir el nombre del proyecto en el archivo 'project.txt', 4) correr el comando 'make' desde la terminal.
+Se puede encontrar un "kit para build" genérico, ya funcional, en el directorio `/kits` de este mismo repositorio. El uso es sencillo: 1) copiar los contenidos de algún kit de la carpeta `/kits` a un nuevo directorio en el que se va a trabajar, 2) guarda el .js de tu proyecto en el directorio `/src` 3) incluir el nombre del proyecto en el archivo `project.txt`, 4) correr el comando `make` desde la terminal.
 
 
 ### Testing
@@ -170,7 +170,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 
 	// 2.B.1.2
-	// Usando solo una instancia de 'var' por scope (o sea, dentro de la función), mejora la legibilidad
+	// Usando solo una instancia de `var` por scope (o sea, dentro de la función), mejora la legibilidad
 	// y mantiene tu lista de declaraciones claras (también ahorra de tipear un poco más)
 
 	// Mal
@@ -367,7 +367,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 			* `"prop" in object`
 
 
-	JavaScript es un lenguaje dinámicamente tipado - por lo que puede ser tu mejor amigo o tu peor enemigo, entonces: Siempre respeta al 'type' como se recomienda.
+	JavaScript es un lenguaje dinámicamente tipado - por lo que puede ser tu mejor amigo o tu peor enemigo, entonces: Siempre respeta al `type` como se recomienda.
 
 	3.B Conversiones implícitas de tipos
 
@@ -386,20 +386,20 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 	// 3.B.1.1
 
-	// 'foo' ha sido declarado con el valor '0' y su tipo es 'number'
+	// `foo` ha sido declarado con el valor `0` y su tipo es `number`
 	var foo = 0;
 
 	// typeof foo;
 	// "number"
 	...
 
-	// En algún lugar, más tarde en tu código, necesitas modificar 'foo'
+	// En algún lugar, más tarde en tu código, necesitas modificar `foo`
 	// con un nuevo valor derivado de el elemento input del HTML
 
 	foo = document.getElementById("foo-input").value;
 
-	// Si vas a testear 'typeof foo' ahora, el resultado sería 'string'
-	// Esto significa que si hubieras tenido lógica que comparara 'foo' así:
+	// Si vas a testear `typeof foo` ahora, el resultado sería `string`
+	// Esto significa que si hubieras tenido lógica que comparara `foo` así:
 
 	if ( foo === 1 ) {
 
@@ -407,7 +407,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 	}
 
-	// `importantTask()` nunca habría sido evaluada, incluso con 'foo' teniendo un valor de "1" 
+	// `importantTask()` nunca habría sido evaluada, incluso con `foo` teniendo un valor de "1" 
 
 	// 3.B.1.2
 
@@ -595,8 +595,8 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 	// ...tomar ventaja del uso del operador ==:
 	if ( foo == null ) ...
 
-	// Recuerda, usar == va a matchear 'null' con AMBOS 'null' y 'undefined'
-	// pero no 'false', "" o 0
+	// Recuerda, usar == va a matchear `null` con AMBOS `null` y `undefined`
+	// pero no `false`, "" o 0
 	null == undefined
 
 	```
@@ -607,7 +607,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 	// 4.2.1
 	// Sobre los tipos y evaluación de expresiones
 
-	Preferir '===' por sobre '==' (a menos que el caso particular requiera una evaluación no fuertemente tipada)
+	Preferir `===` por sobre `==` (a menos que el caso particular requiera una evaluación no fuertemente tipada)
 
 	=== no genera coerción de tipos, lo que significa que:
 
@@ -656,11 +656,11 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 					lang: "es-AR"
 				},
 				getData: function() {
-					// Obtener el valor de 'data'
+					// Obtener el valor de `data`
 					return data;
 				},
 				setData: function( value ) {
-					// setea el valor de 'data' y lo retorna
+					// setea el valor de `data` y lo retorna
 					return ( data = value );
 				}
 			};
@@ -698,7 +698,7 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 		};
 
 
-		// para llamar al constructor sin usar 'new', se podría hacer de la siguiente manera:
+		// para llamar al constructor sin usar `new`, se podría hacer de la siguiente manera:
 		var ctor = function( foo ) {
 			return new Ctor( foo );
 		};
@@ -763,13 +763,13 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 	// 6.3.1
 	// Nombrando strings
 
-	'dog' es un string
+	"dog" es un string
 
 
 	// 6.3.2
 	// Nombrando arrays
 
-	'dogs' es un array de 'dog' strings
+	"dogs" es un array de "dog" strings
 
 
 	// 6.3.3
@@ -808,9 +808,9 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 	Esta sección va a servir para describir ideas y conceptos que no deberían se considerados dogmas, pero existen para alentar a cuestionarse prácticas, en un intento para encontrar mejores maneras de llevar a cabo tareas comunes de programación en JavaScript. 
 
-	A. Usar 'switch' debería ser evitado, traceo moderno de métodos van a poner en una lista negra a las funciones con sentencias switch.
+	A. Usar `switch` debería ser evitado, traceo moderno de métodos van a poner en una lista negra a las funciones con sentencias switch.
 
-	Parecen haber mejoras drásticas a la ejecución de sentencias 'switch' en las últimas versiones de Firefox y Chrome.
+	Parecen haber mejoras drásticas a la ejecución de sentencias `switch` en las últimas versiones de Firefox y Chrome.
 	http://jsperf.com/switch-vs-object-literal-vs-module
 
 	Mejoras destacables pueden ser vistas aquí también: 
@@ -870,13 +870,13 @@ Los proyectos _deben_ incluir alguna forma de testing - unit testing, functional
 
 
 	// 7.A.1.3
-	// Si 'foo' es una propiedad de 'switchObj' o 'switchModule', ejecutar como un método...
+	// Si `foo` es una propiedad de `switchObj` o `switchModule`, ejecutar como un método...
 
 	( switchObj.hasOwnProperty( foo ) && switchObj[ foo ] || switchObj._default )( args );
 
 	( switchModule.hasOwnProperty( foo ) && switchModule[ foo ] || switchModule._default )( args );
 
-	// Si ya se sabe que existe 'foo' y podemos confiar en eso, se puede omitir el uso del OR
+	// Si ya se sabe que existe `foo` y podemos confiar en eso, se puede omitir el uso del OR
 	// dejando sólo la ejecución:
 
 	switchObj[ foo ]( args );
